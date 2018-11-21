@@ -2,7 +2,8 @@ import sys
 import numpy as np
 from matplotlib import pyplot
 
-sys.path.append('..')
+import os
+sys.path.append(os.getcwd() + '/andrew_ng/ml-coursera-python-assignments')
 from submission import SubmissionBase
 
 
