@@ -11,7 +11,7 @@ class SubmissionBase:
 
     submit_url = 'https://www-origin.coursera.org/api/' \
                  'onDemandProgrammingImmediateFormSubmissions.v1'
-    save_file = 'token.pkl'
+    save_file = 'andrew_ng/ml-coursera-python-assignments/token.pkl'
 
     def __init__(self, assignment_slug, part_names):
         self.assignment_slug = assignment_slug
@@ -54,17 +54,19 @@ class SubmissionBase:
         if os.path.isfile(self.save_file):
             with open(self.save_file, 'rb') as f:
                 login, token = pickle.load(f)
-            reenter = input('Use token from last successful submission (%s)? (Y/n): ' % login)
-
-            if reenter == '' or reenter[0] == 'Y' or reenter[0] == 'y':
+            # reenter = input('Use token from last successful submission (%s)? (Y/n): ' % login)
+            #
+            # if reenter == '' or reenter[0] == 'Y' or reenter[0] == 'y':
                 self.login, self.token = login, token
                 return
-            else:
-                os.remove(self.save_file)
+        #     else:
+        #         os.remove(self.save_file)
+        #
+        # self.login = input('Login (email address): ')
+        # self.token = input('Token: ')
 
-        self.login = input('Login (email address): ')
-        self.token = input('Token: ')
-
+        else:
+            print("credentials could not be found in " + self.save_file)
         # Save the entered credentials
         if not os.path.isfile(self.save_file):
             with open(self.save_file, 'wb') as f:
