@@ -1,7 +1,6 @@
 import numpy as np
 import sys
-import os
-sys.path.append(os.getcwd() + '/andrew_ng/ml-coursera-python-assignments')
+sys.path.append('..')
 
 from submission import SubmissionBase
 
